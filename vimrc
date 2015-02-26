@@ -76,10 +76,10 @@ let g:Tex_GotoError=0
 
 command Config tabe ~/.vim/vimrc
 
-augroup MyIMAPs
-    au!
-    au VimEnter * call IMAP('FRAME', "\\begin{frame}\n\\frametitle{<++>}\n\n<++>\n\<bs>\\end{frame}", 'tex')
-augroup END
+"augroup MyIMAPs
+"    au!
+"    au VimEnter * call IMAP('FRAME', "\\begin{frame}\n\\frametitle{<++>}\n\n<++>\n\<bs>\\end{frame}", 'tex')
+"augroup END
 
 " make Y yank until the end of the line
 map Y y$
