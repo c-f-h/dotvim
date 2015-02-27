@@ -43,7 +43,7 @@ set hidden
 
 if has("gui_running")
     colorscheme twilight " gruvbox codeschool wombat
-    set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12,Bitstream\ Vera\ Sans\ Mono\ 12
     set guioptions-=m	" disable menu bar
     set guioptions-=T	" disable toolbar
     set guioptions-=e   " disable GUI tabline
@@ -115,4 +115,5 @@ endfunction
 "au FileType c,cpp call GnuIndentSpaces()
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
