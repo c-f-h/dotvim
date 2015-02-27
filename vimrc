@@ -46,6 +46,7 @@ if has("gui_running")
     set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
     set guioptions-=m	" disable menu bar
     set guioptions-=T	" disable toolbar
+    set guitablabel=%t  " show filename without path in tab label
 else
     colorscheme default
 end
@@ -92,7 +93,7 @@ augroup MyIMAPs
     au VimEnter * call IMAP('FRAME', "\\begin{frame}\n\\frametitle{<++>}\n\n<++>\n\<bs>\\end{frame}", 'tex')
 augroup END
 
-nmap <F2> :w<CR>:TTarget pdf<CR>\ll
+nmap <F2> :w<CR>\ll
 
 " make \ a keyword character for TeX editing
 autocmd FileType tex setlocal iskeyword+=92
