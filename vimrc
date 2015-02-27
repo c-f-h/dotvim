@@ -21,6 +21,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set display+=lastline
+
+set history=1000
+
 
 function! GnuIndentSpaces()
     setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
