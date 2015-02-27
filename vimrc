@@ -46,6 +46,7 @@ if has("gui_running")
     set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
     set guioptions-=m	" disable menu bar
     set guioptions-=T	" disable toolbar
+    set guioptions-=e   " disable GUI tabline
     set guitablabel=%t  " show filename without path in tab label
 else
     colorscheme default
@@ -63,11 +64,13 @@ map Y y$
 nmap <C-H> :tabprev<CR>
 nmap <C-L> :tabnext<CR>
 
-" no ] key on German keyboard, use � for jumping to tags
-nnoremap <Char-252> <C-]>
+" no ] key on German keyboard, use ü for jumping to tags
+nnoremap ü <C-]>
 
 " map Escape to :ccl (close quickfix) in quickfix buffers.
 autocmd FileType qf nmap <buffer> <Esc> :ccl<CR>
+
+set wildignore=*.o,*.a,*.obj,*.exe
 
 command Config tabe $MYVIMRC
 
@@ -110,4 +113,6 @@ function! GnuIndentSpaces()
 endfunction
 
 "au FileType c,cpp call GnuIndentSpaces()
+
+let g:airline#extensions#tabline#enabled = 1
 
