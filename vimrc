@@ -1,6 +1,10 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 set nocompatible
 syntax on
 
+" Load plugins via pathogen
 let g:pathogen_disabled = []
 execute pathogen#infect()
 
@@ -25,44 +29,48 @@ set display+=lastline
 
 set history=1000
 
-
-function! GnuIndentSpaces()
-    setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
-    setlocal shiftwidth=2
-    setlocal smarttab
-    setlocal tabstop=8
-    setlocal expandtab
-endfunction
-
-"au FileType c,cpp call GnuIndentSpaces() 
-
-
 set scrolloff=6		" keep a certain offset from the cursor to the window margins when scrolling
 
 "set selection=exclusive
+"set nostartofline
 
 set linebreak		" wrap lines at word boundaries
 
-set wildmode=longest,list
+set wildmode=longest,list   " tab completion behavior
 set winaltkeys=no
-
-" set nostartofline
 
 set hidden
 
 if has("gui_running")
     colorscheme twilight " gruvbox codeschool wombat
     set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
+    set guioptions-=m	" disable menu bar
+    set guioptions-=T	" disable toolbar
 else
     colorscheme default
 end
 
-set guioptions-=m	" disable menu bar
-set guioptions-=T	" disable toolbar
-set laststatus=2	" always show a status line for the last window
+" always show a status line for the last window
+set laststatus=2
 
 set listchars=tab:>-
 
+" make Y yank until the end of the line
+map Y y$
+
+" more convenient tab switching
+nmap <C-H> :tabprev<CR>
+nmap <C-L> :tabnext<CR>
+
+" no ] key on German keyboard, use ü for jumping to tags
+nnoremap <Char-252> <C-]>
+
+" map Escape to :ccl (close quickfix) in quickfix buffers.
+autocmd FileType qf nmap <buffer> <Esc> :ccl<CR>
+
+command Config tabe $MYVIMRC
+
+""""""""""""""""""" TeX stuff """""""""""""""""""""
 
 let g:Tex_DefaultTargetFormat='pdf'
 
@@ -79,26 +87,26 @@ let g:tex_flavor='latex'
 " don't jump to error window
 let g:Tex_GotoError=0
 
-command Config tabe ~/.vim/vimrc
-
 augroup MyIMAPs
     au!
     au VimEnter * call IMAP('FRAME', "\\begin{frame}\n\\frametitle{<++>}\n\n<++>\n\<bs>\\end{frame}", 'tex')
 augroup END
 
-" make Y yank until the end of the line
-map Y y$
-
-" more convenient tab switching
-nmap <C-H> :tabprev<CR>
-nmap <C-L> :tabnext<CR>
-
-" no ] key on German keyboard, use ü
-nmap ü <C-]>
-
 nmap <F2> :w<CR>:TTarget pdf<CR>\ll
 
-autocmd FileType tex setlocal iskeyword+=92 
+" make \ a keyword character for TeX editing
+autocmd FileType tex setlocal iskeyword+=92
 
-" map Escape to :ccl (close quickfix) in quickfix buffers.
-autocmd FileType qf nmap <buffer> <Esc> :ccl<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" emacs compatibility for indenting C code
+function! GnuIndentSpaces()
+    setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+    setlocal shiftwidth=2
+    setlocal smarttab
+    setlocal tabstop=8
+    setlocal expandtab
+endfunction
+
+"au FileType c,cpp call GnuIndentSpaces()
+
