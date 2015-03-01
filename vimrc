@@ -8,28 +8,36 @@ syntax on
 let g:pathogen_disabled = []
 execute pathogen#infect()
 
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 set visualbell
 set incsearch
 set ignorecase
 set smartcase
 set smarttab
-set smartindent
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set nrformats-=octal
+set ttimeout
+set ttimeoutlen=100
+set ruler
+set wildmenu
 
-set showmatch
+set showmatch       " jump to matching brackets shortly
 set hlsearch
 
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set formatoptions+=j  " delete comment character when joining commented lines
 set display+=lastline
 
 set history=1000
 
-set scrolloff=6		" keep a certain offset from the cursor to the window margins when scrolling
+set scrolloff=6		" keep offset from the cursor to the window margins when scrolling
+set sidescrolloff=2
 
 "set selection=exclusive
 "set nostartofline
@@ -40,6 +48,10 @@ set wildmode=longest,list   " tab completion behavior
 set winaltkeys=no
 
 set hidden
+set autoread
+set sessionoptions-=options
+
+set keywordprg=     " call vim help instead of man on K
 
 if has("gui_running")
     colorscheme twilight " gruvbox codeschool wombat
