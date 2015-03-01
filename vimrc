@@ -48,6 +48,7 @@ if has("gui_running")
     set guioptions-=T	" disable toolbar
     set guioptions-=e   " disable GUI tabline
     set guitablabel=%t  " show filename without path in tab label
+    let g:airline_powerline_fonts = 1
 else
     colorscheme default
 end
@@ -60,9 +61,27 @@ set listchars=tab:>-
 " make Y yank until the end of the line
 map Y y$
 
+function! PrevBufOrTab()
+    if tabpagenr('$') == 1  " only one tab?
+        bprev
+    else
+        tabprev
+    endif
+endfunction
+function! NextBufOrTab()
+    if tabpagenr('$') == 1  " only one tab?
+        bnext
+    else
+        tabnext
+    endif
+endfunction
+
 " more convenient tab switching
-nmap <C-H> :tabprev<CR>
-nmap <C-L> :tabnext<CR>
+nnoremap <silent> <C-H> :call PrevBufOrTab()<CR>
+nnoremap <silent> <C-L> :call NextBufOrTab()<CR>
+
+" toggle between header and source file (uses a.vim)
+nnoremap gA :A<CR>
 
 " no ] key on German keyboard, use ü for jumping to tags
 nnoremap ü <C-]>
@@ -115,6 +134,5 @@ endfunction
 "au FileType c,cpp call GnuIndentSpaces()
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 
 let g:ctrlp_root_markers = ['.projectroot']
