@@ -145,6 +145,7 @@ endfunction
 
 "au FileType c,cpp call GnuIndentSpaces()
 
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1        " use smart buffer/tab line
+let g:airline#extensions#tabline#fnamemod = ':t'    " only filename without path in tabline
 
 let g:ctrlp_root_markers = ['.projectroot']
