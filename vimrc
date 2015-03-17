@@ -108,6 +108,7 @@ command Config tabe $MYVIMRC
 """"""""""""""""""" TeX stuff """""""""""""""""""""
 
 let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='dvi,pdf'  " to invoke bibtex etc
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
