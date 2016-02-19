@@ -125,7 +125,7 @@ let g:Tex_GotoError=0
 
 augroup MyIMAPs
     au!
-    au VimEnter * call IMAP('FRAME', "\\begin{frame}\n\\frametitle{<++>}\n\n<++>\n\<bs>\\end{frame}", 'tex')
+    au VimEnter * call IMAP('FRAME', "\\begin{frame}\n\\frametitle{<++>}\n\n<++>\n\\end{frame}", 'tex')
 augroup END
 
 nmap <F2> :w<CR>\ll
