@@ -62,7 +62,11 @@ if has("gui_running")
     set guitablabel=%t  " show filename without path in tab label
     let g:airline_powerline_fonts = 1
 else
-    colorscheme default
+    if &t_Co == 256
+        colorscheme xoria256
+    else
+        colorscheme default
+    end
 end
 
 " always show a status line for the last window
