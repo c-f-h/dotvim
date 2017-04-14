@@ -153,6 +153,9 @@ endfunction
 let g:airline#extensions#tabline#enabled = 1        " use smart buffer/tab line
 let g:airline#extensions#tabline#fnamemod = ':t'    " only filename without path in tabline
 
+" disable display of spelling errors
+let g:airline_detect_spell = 0
+
 " disable check for trailing whitespace and long lines
 let g:airline#extensions#whitespace#checks = [ 'indent', 'mixed-indent-file' ]
 
