@@ -23,6 +23,8 @@ set ttimeout
 set ttimeoutlen=100
 set ruler
 set wildmenu
+set splitbelow
+set splitright
 
 set showmatch       " jump to matching brackets shortly
 set hlsearch
