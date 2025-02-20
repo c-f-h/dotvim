@@ -4,10 +4,6 @@ scriptencoding utf-8
 set nocompatible
 syntax on
 
-" Load plugins via pathogen
-let g:pathogen_disabled = []
-execute pathogen#infect()
-
 filetype plugin indent on
 
 set visualbell
@@ -130,8 +126,9 @@ let g:tex_flavor='latex'
 let g:Tex_GotoError=0
 
 augroup MyIMAPs
-    au!
-    au VimEnter * call IMAP('FRAME', "\\begin{frame}\n\\frametitle{<++>}\n\n<++>\n\\end{frame}", 'tex')
+    "au!
+    "au VimEnter * call IMAP('FRAME', "\\begin{frame}\n\\frametitle{<++>}\n\n<++>\n\\end{frame}", 'tex')
+    " this doesn't work here anymore, need to put it in a filetype script
 augroup END
 
 nmap <F2> :w<CR>\ll
